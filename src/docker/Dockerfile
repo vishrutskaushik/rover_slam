@@ -1,0 +1,24 @@
+FROM ros:noetic
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  && apt-get install -y --no-install-recommends \
+  libopencv-dev python3-opencv libomp-dev \
+  wget nano build-essential libomp-dev clang lld git\
+  ros-noetic-geodesy ros-noetic-pcl-ros ros-noetic-nmea-msgs ros-noetic-eigen-conversions \
+  ros-noetic-rviz ros-noetic-tf-conversions ros-noetic-libg2o \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
+
+# RUN mkdir -p /root/catkin_ws/src
+WORKDIR /root
+# RUN /bin/bash -c '. /opt/ros/noetic/setup.bash; catkin_init_workspace'
+RUN git clone https://github.com/vishrutskaushik/rover_slam.git
+
+WORKDIR /root/rover_slam
+RUN /bin/bash -c '. /opt/ros/noetic/setup.bash; catkin_make'
+
+WORKDIR /
+COPY /root/rover_slam/ros_entrypoint.sh .
+
+ENTRYPOINT ["/ros_entrypoint.sh"]
+CMD ["bash"]
