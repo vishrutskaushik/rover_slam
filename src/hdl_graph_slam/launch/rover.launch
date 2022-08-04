@@ -15,7 +15,7 @@
   <arg name="enable_robot_odometry_init_guess" default="false" />
   <arg name="robot_odom_frame_id" default="robot_odom" />
 
-  <param name="robot_description" textfile="/home/vishrut/rover.urdf" />
+  <param name="robot_description" textfile="/root/rover_slam/rover/rover.urdf" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
   <!-- in case you use velodyne_driver, comment out the following line -->

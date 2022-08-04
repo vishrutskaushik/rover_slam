@@ -18,7 +18,6 @@ WORKDIR /root/rover_slam
 RUN /bin/bash -c '. /opt/ros/noetic/setup.bash; catkin_make'
 
 WORKDIR /
-COPY /root/rover_slam/ros_entrypoint.sh .
 
-ENTRYPOINT ["/ros_entrypoint.sh"]
+# ENTRYPOINT ["/root/rover_slam/src/ros_entrypoint.sh"]
 CMD ["bash"]
