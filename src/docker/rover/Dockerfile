@@ -2,7 +2,7 @@ FROM arm64v8/ros:noetic
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
   && apt-get install -y --no-install-recommends \
-  libopencv-dev python3-opencv libomp-dev \
+  libgtest-dev libopencv-dev python3-opencv libomp-dev \
   wget nano build-essential libomp-dev lld git \
   ros-noetic-robot-state-publisher \
   ros-noetic-geodesy ros-noetic-pcl-ros ros-noetic-nmea-msgs ros-noetic-eigen-conversions \
