@@ -83,6 +83,7 @@ catkin_package(
     roscpp
     sensor_msgs
     std_msgs
+    tf
     tf_conversions
 #  DEPENDS system_lib
 )
@@ -95,6 +96,10 @@ include_directories(
   ${PCL_INCLUDE_DIRS}
   ${catkin_INCLUDE_DIRS}
 )
+
+#nodes
+add_executable(map2baselink_publisher_node src/hdl_graph_slam/map2baselink_publisher.cpp)
+target_link_libraries(map2baselink_publisher_node ${catkin_LIBRARIES})
 
 # nodelets
 add_library(prefiltering_nodelet apps/prefiltering_nodelet.cpp)
